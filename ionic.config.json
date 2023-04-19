@@ -1,0 +1,7 @@
+{
+  "name": "mobile-app-chatting-socket.io",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
