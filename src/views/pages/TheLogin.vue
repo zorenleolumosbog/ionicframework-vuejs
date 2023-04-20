@@ -38,6 +38,10 @@
 <script lang="ts">
     import { IonPage, IonContent, IonGrid, IonRow, IonCol, IonTitle, IonInput, IonButton } from '@ionic/vue';
     import { defineComponent } from 'vue';
+    import io from 'socket.io-client'
+    const socket = io('http://localhost:3000');
+    import { onlineUsers } from '../../stores';
+    const usersStore = onlineUsers();
 
     export default defineComponent({
     components: { IonPage, IonContent, IonGrid, IonRow, IonCol, IonTitle, IonInput, IonButton } ,
@@ -74,7 +78,11 @@
         },
         submit() {
             if(this.validation.validEmail) {
-                this.$router.push({name: 'people'});
+                localStorage.setItem("userId", this.email);
+                socket.emit('join', this.email, (response: any) => {
+                    this.$router.push({name: 'people'});
+                    usersStore.setOnlineUsers(response);
+                });
             }
         }
     },

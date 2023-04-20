@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import TheLogin from '@/views/pages/TheLogin.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
-    component: TheLogin,
+    component: () => import('@/views/pages/TheLogin.vue'),
   },
   {
     path: '/home',
