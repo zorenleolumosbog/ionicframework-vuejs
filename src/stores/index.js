@@ -18,10 +18,14 @@ export const userAuth = defineStore('auth', {
 export const onlineUsers = defineStore('users', {
   state: () => ({
     users: [],
+    recipientId: null,
   }),
   actions: {
     setOnlineUsers(users) {
       this.users = users
+    },
+    setRecipientId(recipientId) {
+      this.recipientId = recipientId
     }
   },
 });

@@ -7,16 +7,14 @@
       </ion-header>
       <ion-content class="ion-padding">This is the menu content.</ion-content>
     </ion-menu>
-    <ion-page id="menu-content">
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-          <ion-title>{{ routeName }}</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    </ion-page>
+    <ion-header id="menu-content">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ routeName }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
   </template>
   
   <script setup lang="ts">

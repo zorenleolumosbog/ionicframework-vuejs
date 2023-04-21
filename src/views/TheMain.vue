@@ -2,7 +2,7 @@
     <ion-page>
       <ion-tabs>
         <the-menu></the-menu>
-        <ion-router-outlet class="mt-5"></ion-router-outlet>
+        <ion-router-outlet></ion-router-outlet>
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="people" href="/people">
             <ion-icon :icon="people" />

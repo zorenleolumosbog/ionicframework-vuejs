@@ -78,9 +78,9 @@
         },
         submit() {
             if(this.validation.validEmail) {
+                this.$router.push({name: 'people'});
                 localStorage.setItem("userId", this.email);
-                socket.emit('join', this.email, (response: any) => {
-                    this.$router.push({name: 'people'});
+                socket.emit('online', this.email, (response: any) => {
                     usersStore.setOnlineUsers(response);
                 });
             }

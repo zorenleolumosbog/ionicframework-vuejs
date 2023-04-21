@@ -12,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/pages/TheLogin.vue'),
   },
   {
+    path: '/direct-message',
+    name: 'direct-message',
+    component: () => import('@/views/pages/TheDirectMessage.vue'),
+  },
+  {
     path: '/home',
     redirect: '/people',
     component: () => import('@/views/TheMain.vue'),
@@ -24,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/chat',
         name: 'chat',
-        component: () => import('@/views/pages/TheChat.vue'),
+        component: () => import('@/views/pages/TheChatHeads.vue'),
       },
       {
         path: '/calls',

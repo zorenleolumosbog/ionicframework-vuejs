@@ -10,7 +10,7 @@ const io = require('socket.io')(server, {
 
 var users = [];
 io.on('connection', (socket) => {
-  socket.on('join', (userId, callback) => {
+  socket.on('online', (userId, callback) => {
     console.log(`user connected: ${userId}`);
 
     users.push({
@@ -18,8 +18,12 @@ io.on('connection', (socket) => {
       userId: userId
     });
 
-    io.emit('join', users);
+    io.emit('online', users);
     callback(users);
+  });
+
+  socket.on('join', (userId) => {
+    socket.join(userId);
   });
 
   socket.on('typing', (state) => {
@@ -27,12 +31,14 @@ io.on('connection', (socket) => {
   });
 
   socket.on('message', (state) => {
-    console.log(`message: ${state.message}`);
-
     if(state.recipientId) {
+      console.log(`${state.senderId} message to ${state.recipientId}: ${state.message}`);
+      
       io.to(state.senderId).emit('message', state)
       io.to(state.recipientId).emit('message', state)
     } else {
+      console.log(`message: ${state.message}`);
+      
       io.emit('message', state.message);
     }
   });

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  import { IonTitle, IonContent, IonPage } from '@ionic/vue';
+</script>
+
 <template>
   <ion-page>
     <ion-content>
@@ -5,7 +9,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-  import { IonTitle, IonContent, IonPage } from '@ionic/vue';
-</script>
