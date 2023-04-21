@@ -81,6 +81,9 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
+            <div v-if="isTyping" class="d-flex float-end p-2">
+                {{ state.recipientId }} is typing...
+            </div>
             <div class="d-flex justify-content-center align-items-center fixed-bottom p-2">
                 <ion-textarea
                     label="Message"
