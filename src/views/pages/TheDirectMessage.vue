@@ -34,7 +34,7 @@
         });
 
         socket.on('message', (data) => {
-            if (data.recipientId === userStore.recipientId) {
+            if(data.senderId == userStore.recipientId) {
                 messages.push(data);
             }
         });
@@ -46,6 +46,12 @@
 
     const sendMessage = () => {
         if (state.senderId && state.recipientId && state.message) {
+            messages.push({
+                senderId: authStore.userId,
+                recipientId: userStore.recipientId,
+                message: state.message,
+            });
+
             socket.emit('message', state);
             state.message = '';
         }

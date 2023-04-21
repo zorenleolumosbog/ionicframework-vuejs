@@ -34,7 +34,6 @@ io.on('connection', (socket) => {
     if(state.recipientId) {
       console.log(`${state.senderId} message to ${state.recipientId}: ${state.message}`);
       
-      io.to(state.senderId).emit('message', state)
       io.to(state.recipientId).emit('message', state)
     } else {
       console.log(`message: ${state.message}`);
@@ -55,7 +54,7 @@ io.on('connection', (socket) => {
     if (index !== -1) {
       console.log(`user disconnected: ${users[index].userId}`);
       users.splice(index, 1);
-      io.emit('join', users);
+      io.emit('online', users);
     }
   });
 })
