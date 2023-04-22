@@ -46,6 +46,16 @@ export const onlineUsers = defineStore('users', {
           newMessage: chat.message
         });
       }
+    },
+    setSeenChatHead(senderId) {
+      // loop through the array of objects using forEach
+      this.chatHeads.forEach(chatHead => {
+        // check if the object has a certain property with a certain value
+        if (chatHead?.senderId === senderId) {
+          // replace the value of the property
+          chatHead.newMessage = '';
+        }
+      });
     }
-  },
+  }
 });

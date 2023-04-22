@@ -15,6 +15,7 @@
   const chat = (recipientId: string) => {
     router.push({name: 'direct-message'});
     userStore.setRecipientId(recipientId);
+    userStore.setSeenChatHead(recipientId);
   };
 </script>
 
