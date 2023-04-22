@@ -19,6 +19,7 @@ export const onlineUsers = defineStore('users', {
   state: () => ({
     users: [],
     recipientId: null,
+    chatHeads: []
   }),
   actions: {
     setOnlineUsers(users) {
@@ -26,6 +27,25 @@ export const onlineUsers = defineStore('users', {
     },
     setRecipientId(recipientId) {
       this.recipientId = recipientId
+    },
+    setChatHeads(chat) {
+      let found = false;
+      // loop through the array of objects using forEach
+      this.chatHeads.forEach(chatHead => {
+        // check if the object has a certain property with a certain value
+        if (chatHead?.senderId === chat?.senderId) {
+          // replace the value of the property
+          found = true;
+          chatHead.newMessage = chat.message;
+        }
+      });
+
+      if(!found) {
+        this.chatHeads.push({
+          senderId: chat.senderId,
+          newMessage: chat.message
+        });
+      }
     }
   },
 });

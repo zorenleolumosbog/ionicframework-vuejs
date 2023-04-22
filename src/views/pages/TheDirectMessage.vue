@@ -34,6 +34,8 @@
         });
 
         socket.on('message', (data) => {
+            userStore.setChatHeads(data);
+            
             if(data.senderId == userStore.recipientId) {
                 messages.push(data);
             }
